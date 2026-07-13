@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jenniferwaldhelm.github.io/tielinwaldhelm/sitemap.xml
