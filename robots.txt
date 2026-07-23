@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jenniferwaldhelm.github.io/tielinwaldhelm/sitemap.xml
+Sitemap: https://tielinlibras.com.br/sitemap.xml
