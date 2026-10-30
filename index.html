@@ -470,5 +470,87 @@
     els.forEach(el=>el.classList.add('show'));
   }
 </script>
+
+<script>
+/* WebMCP: expõe ferramentas somente leitura para agentes de IA no navegador.
+   Só roda se o navegador suportar a API; caso contrário não faz nada. */
+(function(){
+  var mc = (typeof document !== 'undefined' && document.modelContext) ||
+           (typeof navigator !== 'undefined' && navigator.modelContext);
+  if(!mc || typeof mc.registerTool !== 'function') return;
+
+  var BASE = 'https://tielinlibras.com.br';
+  var WHATS = '5543999102424';
+  function ok(obj){ return { content:[{ type:'text', text: JSON.stringify(obj) }] }; }
+  function add(tool){
+    try{ try{ mc.unregisterTool(tool.name); }catch(e){} mc.registerTool(tool); }catch(e){}
+  }
+
+  add({
+    name:'get_contact_info',
+    description:'Retorna os canais de contato e redes sociais de Tielin Waldhelm, intérprete de Libras em Maringá e Londrina (PR).',
+    inputSchema:{ type:'object', properties:{} },
+    annotations:{ readOnlyHint:true },
+    async execute(){
+      return ok({
+        nome:'Tielin Waldhelm',
+        profissao:'Intérprete de Libras',
+        whatsapp:'+55 43 99910-2424',
+        whatsapp_link:'https://wa.me/'+WHATS,
+        instagram:'https://www.instagram.com/tielinwaldhelmtils',
+        tiktok:'https://www.tiktok.com/@tielinwaldhelm',
+        regiao:'Maringá, Londrina e região metropolitana (PR)'
+      });
+    }
+  });
+
+  add({
+    name:'list_services',
+    description:'Lista os serviços oferecidos: interpretação de Libras em eventos culturais e tradução de vídeos para Libras.',
+    inputSchema:{ type:'object', properties:{} },
+    annotations:{ readOnlyHint:true },
+    async execute(){
+      return ok([
+        { servico:'Interpretação de Libras em eventos culturais', detalhe:'Shows, festivais, teatro e saraus literários, presencial em Maringá, Londrina e região.' },
+        { servico:'Tradução de vídeo para Libras', detalhe:'Vídeos institucionais, educativos e de treinamento, gravados e entregues online.' }
+      ]);
+    }
+  });
+
+  add({
+    name:'list_blog_posts',
+    description:'Lista os artigos do blog sobre tradução de vídeo em Libras (preço, processo, legislação e atendimento regional).',
+    inputSchema:{ type:'object', properties:{} },
+    annotations:{ readOnlyHint:true },
+    async execute(){
+      return ok([
+        { titulo:'Quanto custa traduzir um vídeo para Libras?', url:BASE+'/blog/quanto-custa-traducao-libras.html' },
+        { titulo:'Como funciona a tradução de Libras em vídeo institucional', url:BASE+'/blog/como-funciona-traducao-video-institucional.html' },
+        { titulo:'Lei de acessibilidade em Libras: sua empresa é obrigada?', url:BASE+'/blog/lei-acessibilidade-libras-empresas.html' },
+        { titulo:'Tradução de Libras em Maringá e Londrina: atendimento online', url:BASE+'/blog/traducao-libras-maringa-londrina-online.html' }
+      ]);
+    }
+  });
+
+  add({
+    name:'get_quote_link',
+    description:'Gera um link de WhatsApp com mensagem pré-preenchida para pedir orçamento. Não envia nada: apenas devolve o link para o usuário abrir.',
+    inputSchema:{
+      type:'object',
+      properties:{
+        tipo:{ type:'string', enum:['evento_cultural','traducao_video'], description:'Tipo de serviço desejado.' },
+        detalhes:{ type:'string', description:'Resumo curto do pedido (data, local ou duração do vídeo).' }
+      },
+      required:['tipo']
+    },
+    annotations:{ readOnlyHint:true },
+    async execute(args){
+      var tipo = args && args.tipo === 'traducao_video' ? 'tradução de vídeo para Libras' : 'interpretação de Libras em evento cultural';
+      var msg = 'Olá, Tielin! Gostaria de um orçamento de ' + tipo + '.' + (args && args.detalhes ? ' Detalhes: ' + String(args.detalhes).slice(0,300) : '');
+      return ok({ link:'https://wa.me/'+WHATS+'?text='+encodeURIComponent(msg) });
+    }
+  });
+})();
+</script>
 </body>
 </html>
