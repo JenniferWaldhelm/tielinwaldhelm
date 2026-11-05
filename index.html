@@ -519,11 +519,12 @@
 
   add({
     name:'list_blog_posts',
-    description:'Lista os artigos do blog sobre tradução de vídeo em Libras (preço, processo, legislação e atendimento regional).',
+    description:'Lista os artigos do blog sobre Libras em eventos culturais e tradução de vídeo (preço, processo, legislação e atendimento regional).',
     inputSchema:{ type:'object', properties:{} },
     annotations:{ readOnlyHint:true },
     async execute(){
       return ok([
+        { titulo:'Intérprete de Libras para eventos culturais: guia de contratação', url:BASE+'/blog/interprete-libras-eventos-culturais.html' },
         { titulo:'Quanto custa traduzir um vídeo para Libras?', url:BASE+'/blog/quanto-custa-traducao-libras.html' },
         { titulo:'Como funciona a tradução de Libras em vídeo institucional', url:BASE+'/blog/como-funciona-traducao-video-institucional.html' },
         { titulo:'Lei de acessibilidade em Libras: sua empresa é obrigada?', url:BASE+'/blog/lei-acessibilidade-libras-empresas.html' },
