@@ -225,6 +225,20 @@
     .reveal{opacity:1;transform:none;transition:none;}
     html{scroll-behavior:auto;}
   }
+
+  /* AVALIAÇÕES */
+  .rev-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin-bottom:28px;}
+  .rev-score{font-family:'Anton',sans-serif;font-size:22px;color:var(--mustard-dark);letter-spacing:0.02em;}
+  .rev-score span{font-family:'Work Sans',sans-serif;font-size:14px;color:#4a453b;letter-spacing:0;margin-left:6px;}
+  .rev-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:900px){.rev-grid{grid-template-columns:repeat(3,1fr);}}
+  .rev-card{background:var(--cream);border:1px solid rgba(28,26,21,0.1);border-radius:4px;padding:26px 24px;display:flex;flex-direction:column;}
+  .rev-stars{color:var(--mustard);font-size:18px;letter-spacing:2px;margin-bottom:12px;}
+  .rev-card blockquote{margin:0 0 18px;font-size:15px;line-height:1.65;color:#2c2820;flex:1;}
+  .rev-card blockquote p{margin:0 0 6px;}
+  .rev-name{font-weight:600;font-size:14px;}
+  .rev-src{font-size:12.5px;color:#6b6455;}
+  .rev-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
 </style>
 </head>
 <body>
@@ -430,6 +444,44 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <section id="avaliacoes" class="bg-cream2">
+    <div class="wrap">
+      <span class="eyebrow">Avaliações</span>
+      <h2 style="font-size:clamp(28px,4.6vw,44px);margin-bottom:14px;">O que dizem sobre meu trabalho</h2>
+      <div class="rev-head">
+        <div class="rev-score">5,0 <span>★★★★★ · 3 avaliações no Google</span></div>
+      </div>
+      <div class="rev-grid">
+        <figure class="rev-card reveal" style="margin:0;">
+          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
+          <blockquote><p>A Tielin uma pessoa admirável, que realiza seu trabalho com dedicação, competência e muito comprometimento. Sua postura, responsabilidade e empenho fazem a diferença, deixando marcas positivas por onde passa. Ela coloca muito carinho e profissionalismo naquilo que faz. Parabéns pelo excelente trabalho que desenvolve! 💖 🌸 ✨</p></blockquote>
+          <figcaption><div class="rev-name">Suelen Aparecida da Silva Quemel</div><div class="rev-src">Avaliação no Google</div></figcaption>
+        </figure>
+        <figure class="rev-card reveal" style="margin:0;">
+          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
+          <blockquote>
+            <p>A sua expressividade facial e corporal é maravilhosa;</p>
+            <p>Sua energia contagia;</p>
+            <p>Sua sinalização é extremamente clara e fluida;</p>
+            <p>Acessibilidade de alto nível;</p>
+            <p>Parabéns pela agilidade e foco;</p>
+            <p>Você não é apenas uma ponte de comunicação, você é a própria inclusão em movimento!</p>
+          </blockquote>
+          <figcaption><div class="rev-name">Camila Vieira Teles</div><div class="rev-src">Avaliação no Google</div></figcaption>
+        </figure>
+        <figure class="rev-card reveal" style="margin:0;">
+          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
+          <blockquote><p>Sensacional! Profissional muito expressiva, simpática e super alto astral. Interpretação impecável e muito acolhedora àqueles que ali estão e precisam dessa acessibilidade. É nítido e encantador, ver e sentir, o amor que ela tem pelo que faz.</p></blockquote>
+          <figcaption><div class="rev-name">Amanda Goulart de Oliveira</div><div class="rev-src">Avaliação no Google</div></figcaption>
+        </figure>
+      </div>
+      <div class="rev-actions">
+        <a class="btn btn-outline" href="https://g.page/r/CQNHQUCP3nBmEAI" target="_blank" rel="noopener">Ver no Google</a>
+        <a class="btn" href="https://g.page/r/CQNHQUCP3nBmEAI/review" target="_blank" rel="noopener">Deixar uma avaliação</a>
+      </div>
     </div>
   </section>
 
